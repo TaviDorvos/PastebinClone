@@ -18,6 +18,6 @@ class PastebinController extends Controller
         
         $result = DB::insert('INSERT INTO bins (title, bin_text) VALUES (?, ?)', [$request->input('input-title'), $request->input('input-text')]);
 
-        return redirect()->to('/new-paste');
+        return redirect()->to('/confirmation');
     }
 }

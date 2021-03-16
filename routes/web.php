@@ -12,10 +12,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function() {
-    return view('welcome');
+
+//Registration
+Route::get('/', [
+    'uses' => 'App\Http\Controllers\RegistrationController@create'
+]);
+
+Route::post('/', [
+    'uses' => 'App\Http\Controllers\RegistrationController@store',
+    'as' => 'register-page.store'
+]);
+//
+
+Route::get('/login', function () {
+    return view('login-page');
 });
 
+//Creating the new bin
 Route::get('/new-paste', [
     'uses' => 'App\Http\Controllers\PastebinController@create'
 ]);
@@ -24,7 +37,9 @@ Route::post('/new-paste', [
     'uses' => 'App\Http\Controllers\PastebinController@store',
     'as' => 'new-paste.store'
 ]);
+//
 
-Route::get('/confirmation', function() {
-    return view('submit-confirm');
+//Confirmation after the form completed
+Route::get('/confirmation', function () {
+    return view('confirmation');
 });
