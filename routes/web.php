@@ -24,9 +24,16 @@ Route::post('/', [
 ]);
 //
 
-Route::get('/login', function () {
-    return view('login-page');
-});
+//Login
+Route::get('/login', [
+    'uses' => 'App\Http\Controllers\LoginController@create'
+]);
+
+Route::post('/login', [
+    'uses' => 'App\Http\Controllers\LoginController@store',
+    'as' => 'login-page.store'
+]);
+//
 
 //Creating the new bin
 Route::get('/new-paste', [
