@@ -15,13 +15,13 @@ class RegistrationController extends Controller {
         $this->validate(request(), [
             'input-username' => 'required',
             'input-email' => 'required|email',
-            'input-password' => 'required'
+            'password' => 'required|confirmed'
         ]);
 
         $user = User::create([
             'username'=> request('input-username'), 
             'email'=> request('input-email'),
-            'password'=> request('input-password'),
+            'password'=> request('password'),
         ]);
 
         Auth::login($user);
