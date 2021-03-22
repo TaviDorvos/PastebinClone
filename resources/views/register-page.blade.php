@@ -26,9 +26,24 @@
                     <input type="email" class="form-control" id="input-email" name="input-email" required>
                 </div>
                 <div class="form-group mb-3 mt-3">
-                    <label for="input-password">Password</label>
-                    <input type="password" class="form-control" id="input-password" name="input-password" required>
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
+                <div class="form-group mb-3 mt-3">
+                    <label for="password_confirmation">Password Confirmation:</label>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                </div>
+                @if(count($errors))
+                <div class="form-group">
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                @endif
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
             <h2 class="mt-4" style="font-size: 14px;">Already have an account? <a href="http://127.0.0.1:8000/login">Login here</a>.</h2>
