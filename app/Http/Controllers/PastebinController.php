@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\DB;
 class PastebinController extends Controller
 {
     public function create() {
-        return view('new-paste');
+        return view('bins.new-bin');
     }
 
     public function store(Request $request) {
         // dd($request->all());
         
-        $result = DB::insert('INSERT INTO bins (title, bin_text) VALUES (?, ?)', [$request->input('input-title'), $request->input('input-text')]);
+        $result = DB::insert('INSERT INTO bins (title, bin_text, id_user) VALUES (?, ?, ?)', [$request->input('input-title'), $request->input('input-text'), auth()->id()]);
 
         return redirect()->to('/confirmation');
     }

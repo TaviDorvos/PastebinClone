@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function() {
+    return view("welcome");
+});
+
 //Registration
-Route::get('/', [
+Route::get('/register', [
     'uses' => 'App\Http\Controllers\RegistrationController@create'
 ]);
 
-Route::post('/', [
+Route::post('/register', [
     'uses' => 'App\Http\Controllers\RegistrationController@store',
     'as' => 'register-page.store'
 ]);
@@ -35,18 +40,32 @@ Route::post('/login', [
 ]);
 //
 
-//Creating the new bin
-Route::get('/new-paste', [
+//Creating the new bin page
+Route::get('/new-bin', [
     'uses' => 'App\Http\Controllers\PastebinController@create'
 ]);
 
-Route::post('/new-paste', [
+Route::post('/new-bin', [
     'uses' => 'App\Http\Controllers\PastebinController@store',
-    'as' => 'new-paste.store'
+    'as' => 'new-bin.store'
 ]);
 //
 
 //Confirmation after the form completed
 Route::get('/confirmation', function () {
-    return view('confirmation');
+    return view('bins.confirmation');
+});
+
+
+Route::get('bins', function () {
+    $bins = DB::table('bins')->get();
+    
+    return view('bins.bins-list', ['bins' => $bins]);
+});
+
+Route::get('bins/{id}', function ($id) {
+    
+    $bin = DB::table('bins')->find($id);
+    
+    return view('bins.show-bin', ['bin' => $bin]);
 });

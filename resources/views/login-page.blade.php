@@ -37,7 +37,7 @@
                 @endif
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
-            <h2 class="mt-4" style="font-size: 14px;">Don't have an account? <a href="http://127.0.0.1:8000">Register here</a>.</h2>
+            <h2 class="mt-4" style="font-size: 14px;">Don't have an account? <a href="/register">Register here</a>.</h2>
 
         </div>
     </div>

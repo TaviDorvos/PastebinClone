@@ -13,7 +13,7 @@ class RegistrationController extends Controller {
 
     public function store() {
         $this->validate(request(), [
-            'input-username' => 'required',
+            'input-username' => 'required|unique:users,username',
             'input-email' => 'required|email',
             'password' => 'required|confirmed'
         ]);
@@ -26,6 +26,6 @@ class RegistrationController extends Controller {
 
         Auth::login($user);
 
-        return redirect()->to('/new-paste');
+        return redirect()->to('/bins');
     }
 }

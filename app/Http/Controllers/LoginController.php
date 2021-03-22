@@ -13,7 +13,7 @@ class LoginController extends Controller {
     public function store() {
 
         if (Auth::attempt(['username' => request('input-username'), 'password' => request('input-password')])) {
-            return redirect()->intended('new-paste');
+            return redirect()->intended('bins');
         }
 
         return back()->withErrors([
