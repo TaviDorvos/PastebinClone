@@ -46,7 +46,7 @@
                 @endif
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
-            <h2 class="mt-4" style="font-size: 14px;">Already have an account? <a href="http://127.0.0.1:8000/login">Login here</a>.</h2>
+            <h2 class="mt-4" style="font-size: 14px;">Already have an account? <a href="/login">Login here</a>.</h2>
         </div>
     </div>
 </body>
