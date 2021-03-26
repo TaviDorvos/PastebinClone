@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.master')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('content')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<div class="text-center">
+    <h1>Welcome to my pastebin clone!</h1>
+    <p><i>What is a pastebin?</i></p>
+    <p>A pastebin or text storage site is a type of online content hosting service where users can store plain text, e.g. to source code snippets for code review via Internet Relay Chat (IRC). The first pastebin was the eponymous pastebin.com. Other sites with the same functionality have appeared, and several open source pastebin scripts are available. Pastebins may allow commenting where readers can post feedback directly on the page. GitHub Gists are a type of pastebin with version control.</p>
+    
+    @if( auth()->check() )
 
-    <title>Bins List</title>
-</head>
+    <p><b><a href="/bins">Go to your saved bins list.</a></b></p>
 
-<body class="container">
-    <h1>Hello</h1>
-    <p>Do you have an account? <a href="/login">Login here</a></p>
-    <p>Or you can <a href="/register">register here</a></p>
-</body>
+    @else
 
-</html>
+    <p><b>Do you have an account? <a href="/login">Login here</a></b></p>
+    <p><b>You don't have an account? <br> No worries! You can <a href="/register">register here</a>.</b></p>
+
+    @endif
+</div>
+
+@endsection

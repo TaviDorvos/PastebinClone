@@ -11,6 +11,7 @@ class RegistrationController extends Controller {
         return view('register-page');
     }
 
+    //validating and storing the data of the user who wants to register
     public function store() {
         $this->validate(request(), [
             'input-username' => 'required|unique:users,username',
