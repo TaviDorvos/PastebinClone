@@ -10,8 +10,8 @@ class LoginController extends Controller {
         return view('login-page');
     }
 
+    //Login function
     public function store() {
-
         if (Auth::attempt(['username' => request('input-username'), 'password' => request('input-password')])) {
             return redirect()->intended('bins');
         }
@@ -19,5 +19,16 @@ class LoginController extends Controller {
         return back()->withErrors([
             'message' => 'The provided credentials do not match our records.',
         ]);
+    }
+
+    //logout
+    public function destroy(Request $request) {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->to('/');
     }
 }

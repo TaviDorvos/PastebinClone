@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Models\Bin;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,9 @@ Route::post('/login', [
 ]);
 //
 
+//Log out function
+Route::get('/logout', 'App\Http\Controllers\LoginController@destroy');
+
 //Creating the new bin page
 Route::get('/new-bin', [
     'uses' => 'App\Http\Controllers\PastebinController@create'
@@ -56,16 +60,8 @@ Route::get('/confirmation', function () {
     return view('bins.confirmation');
 });
 
+//Get the view of the bins list
+Route::get('bins', 'App\Http\Controllers\PastebinController@binsList');
 
-Route::get('bins', function () {
-    $bins = DB::table('bins')->get();
-    
-    return view('bins.bins-list', ['bins' => $bins]);
-});
-
-Route::get('bins/{id}', function ($id) {
-    
-    $bin = DB::table('bins')->find($id);
-    
-    return view('bins.show-bin', ['bin' => $bin]);
-});
+//get the view of the bin with the specific id (single bin view)
+Route::get('bins/{id}', 'App\Http\Controllers\PastebinController@showBin'); 

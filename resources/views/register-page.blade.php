@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.master')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('content')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
-    <title>Register - Pastebin Clone</title>
-</head>
-
-<body class="container">
     <div class="row justify-content-center">
         <div class="col-10 col-md-4">
             <form id="register" method="post" action="{{ route('register-page.store')}}">
@@ -49,6 +40,4 @@
             <h2 class="mt-4" style="font-size: 14px;">Already have an account? <a href="/login">Login here</a>.</h2>
         </div>
     </div>
-</body>
-
-</html>
+@endsection
